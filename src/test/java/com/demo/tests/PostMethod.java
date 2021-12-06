@@ -7,8 +7,6 @@ import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 public class PostMethod {
 
