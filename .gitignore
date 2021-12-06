@@ -4,3 +4,5 @@ TestNG
 Maven Dependencies
 JRE System Library
 src/main/java
+test-output
+.settings
