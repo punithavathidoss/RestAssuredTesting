@@ -1,4 +1,4 @@
-###<p align="center"><i>*****REST Assure API Testing for Beginners*****</p></i>
+###<i>*****REST Assured API Testing for Beginners*****</i>
 
 
 
