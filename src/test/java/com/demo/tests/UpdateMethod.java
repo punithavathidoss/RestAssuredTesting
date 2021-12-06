@@ -1,59 +1,59 @@
 package com.demo.tests;
 
 import org.json.simple.JSONObject;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import io.restassured.RestAssured;
+import static io.restassured.RestAssured.*;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 public class UpdateMethod {
 
-	@Test
-	public static void list() {
-
-		Response list = RestAssured.get("https://reqres.in/api/users/2");
-		System.out.println(list.asString());
+	@BeforeTest
+	public void setUp() {
+		baseURI = "https://reqres.in/api/users";
 	}
 
-	@Test
+	@Test(priority = 1)
 	public static void updateList() {
 
-		int id = 2;
+		JSONObject request = new JSONObject();
+		request.put("first_name", "Polo");
+		request.put("last_name", "Weaver");
 
-		RestAssured.baseURI = "https://reqres.in/api/users";
-		RequestSpecification req = RestAssured.given();
+		System.out.println(request.toJSONString());
+
+		given().
+		 header("Content-Type", "application/json").
+		 contentType(ContentType.JSON).
+		 accept(ContentType.JSON)
+		.body(request.toJSONString()).
+	    when().
+	     put("/users/2").
+	    then().
+	     statusCode(200).
+	      log().all();
+
+	}
+
+	@Test(priority = 2)
+	public void patchTest() {
+
+		int id = 2;
 
 		JSONObject params = new JSONObject();
 		params.put("first_name", "Punrus");
 
-		req.header("Content-Type", "application/json");
-		req.body(params.toJSONString());
+		System.out.println(params.toJSONString());
 
-		Response re = req.put("/2" + id);
-
-		System.out.println(re.getStatusCode());
-		System.out.println("Update status:" + re.asString());
-	}
-
-	@Test
-	public void testPut() {
-		
-		RestAssured.baseURI = "https://reqres.in/api";
-		JSONObject request = new JSONObject();
-		request.put("first_name", "Polo");
-		request.put("last_name","Weaver");
-		
-		System.out.println(request.toJSONString());
-		RestAssured.given().
-		 header("Content-Type","application/json").
+		given().
+		 header("Content-Type", "application/json").
 		 contentType(ContentType.JSON).
 		 accept(ContentType.JSON).
-		 body(request.toJSONString()).
+		 body(params.toJSONString()).
 		when().
-		 put("/users/2").
-		then().statusCode(200).
-		log().all();
+		 patch("/users/2").
+		then().
+		 statusCode(200).
+		 log().all();
 	}
 }
