@@ -90,7 +90,7 @@ public class APIAssertionTest {
 	}
 	
 	@Test
-	public void deleteMethod() {
+	public void deleteMethodValidation() {
 		Response responce =  when().delete("/users/2").
 		                     then().extract().response();
 		
