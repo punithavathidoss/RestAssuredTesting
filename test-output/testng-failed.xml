@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.demo.tests.DeleteMethod">
+      <class name="com.demo.tests.APIAssertionTest">
         <methods>
-          <include name="testDelete"/>
+          <include name="deleteMethod"/>
+          <include name="setUpBaseURI"/>
         </methods>
-      </class> <!-- com.demo.tests.DeleteMethod -->
+      </class> <!-- com.demo.tests.APIAssertionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
