@@ -1,21 +1,18 @@
-###<i>*****REST Assured API Testing for Beginners*****</i>
+<h1><i>*****REST Assured API Testing for Beginners*****</i></h1>
 
 
 
 <p>This Repository file contains all basic codes for beginners to understand and for reference to get an idea about the Basics of API Testing.</p>
 
-# Requirements
+## Requirements
 
 => JAVA -> Version 11.-.- 
-
 <br>
 
 => Eclipse WorkBench -> Latest Version
-
 <br>
 
 => PostMan API testing tool -> Latest Version
-
 <br>
 
 => TEST NG -> Version 7.-.-
@@ -28,15 +25,12 @@
 <br>
 
 *REST Assured
-
 <br>
 
 *Test NG
-
 <br>
 
 *JSON Simple
-
 <br>
 
 
