@@ -1,17 +1,12 @@
 package com.demo.tests;
 
 import org.json.simple.JSONObject;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 import io.restassured.http.ContentType;
 
-public class UpdateMethod {
+public class UpdateMethod extends BaseTestURI{
 
-	@BeforeTest
-	public void setUp() {
-		baseURI = "https://reqres.in/api/users";
-	}
 
 	@Test(priority = 1)
 	public static void updateList() {

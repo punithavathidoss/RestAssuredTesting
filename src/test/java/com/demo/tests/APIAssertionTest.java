@@ -1,31 +1,23 @@
 package com.demo.tests;
 
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
-
-import org.json.simple.JSONObject;
+import static io.restassured.RestAssured.*;
+import static com.demo.resources.Payload.*;
+import static com.demo.utils.JsonFormatter.*;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-public class APIAssertionTest {
+public class APIAssertionTest extends BaseTestURI {
 
-	@BeforeTest
-	public void setUpBaseURI() {
-		baseURI = "https://reqres.in/api";
-	}
 
 	@Test
 	public static void getUsersById() {
 
 		Response resp = given().when().get("/users/2").then().extract().response();
 
-		JsonPath jPath = new JsonPath(resp.asString());
+		JsonPath jPath = jsonPathResponse(resp);
 
 		Assert.assertEquals(jPath.getInt("data.id"), 2);
 		Assert.assertEquals(jPath.getString("data.first_name"), "Janet");
@@ -37,7 +29,7 @@ public class APIAssertionTest {
 	public static void getUsers() {
 		Response res = given().queryParam("page", "2").log().all().when().get("/users").then().extract().response();
 
-		JsonPath jsPath = new JsonPath(res.asString());
+		JsonPath jsPath = jsonPathResponse(res);
 
 		Assert.assertEquals(jsPath.getInt("page"), 2);
 		Assert.assertEquals(jsPath.getInt("per_page"), 6);
@@ -51,15 +43,15 @@ public class APIAssertionTest {
 	@Test
 	public static void createUserandValidate() {
 
-		JSONObject postRequest = new JSONObject();
-		postRequest.put("name", "Puni");
-		postRequest.put("job", "Analyst");
+		String name ="Puni";
+		String job = "Analyst";
 
-		Response re = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(postRequest.toJSONString())
-				      .when().post("/users")
+		Response re = given()
+				      .when().contentType(ContentType.JSON).body(createUser(name,job))
+				      .post("/users")
 				      .then().extract().response();
 
-		JsonPath jsoPath = new JsonPath(re.asString());
+		JsonPath jsoPath = jsonPathResponse(re);
 
 		Assert.assertEquals(re.statusCode(), 201);
 		Assert.assertNotNull(jsoPath.getInt("id"));
@@ -71,20 +63,27 @@ public class APIAssertionTest {
 	@Test
 	public static void updateAndValidate() {
 
-		JSONObject putRequest = new JSONObject();
-
-		putRequest.put("name", "Puni");
-		putRequest.put("job", "zion resident");
-
-		Response rsp = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(putRequest.toJSONString()).
-	               	   when().put("/users/2").
+		String name = "Puni";
+		String job = "zion resident";
+		String role = "Testing";
+		
+		Response rsp = given().body(updateUser(name, job, role)).
+	               	   when().contentType(ContentType.JSON).put("/users/2").
 		               then().extract().response();
+		
+		
+		//Alternate
+//		Response rsp = given().body(updateUser("Puni", "zion resident", "Testing")).
+//            	   when().contentType(ContentType.JSON).put("/users/2").
+//	               then().extract().response();
 
-		JsonPath jsonPath = new JsonPath(rsp.asString());
+		
+		JsonPath jsonPath = jsonPathResponse(rsp);
 
 		Assert.assertEquals(rsp.statusCode(), 200);
-		Assert.assertEquals(jsonPath.getString("name"), "Puni");
-		Assert.assertEquals(jsonPath.getString("job"), "zion resident");
+		Assert.assertEquals(jsonPath.getString("name"), name);
+		Assert.assertEquals(jsonPath.getString("job"), job);
+		Assert.assertEquals(jsonPath.getString("role"), role);
 		Assert.assertNotNull(jsonPath.getString("updatedAt"));
 
 	}
