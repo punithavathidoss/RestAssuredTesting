@@ -8,12 +8,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 
-public class PostMethod {
+public class PostMethod extends BaseTestURI{
 
-	@BeforeTest
-	public void setUp() {
-		baseURI = "https://reqres.in/api";
-	}
 
 	@Test
 	public void samplePost() {
