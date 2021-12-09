@@ -4,23 +4,23 @@
 
 	<test name="Reqres API">
 		<classes>
-			<class name="com.demo.tests.APIAssertionTest" />
-			<class name="com.demo.tests.PostMethod" />
-			<class name="com.demo.tests.UpdateMethod" />
-			<class name="com.demo.tests.DeleteMethod" />
-		</classes>
-	</test>
-
-	<test name="Local API">
-		<classes>
-			<class name="com.demo.tests.TestLocalAPI" />
+			<class name="com.demo.APItests.PostMethod" />
+			<class name="com.demo.APItests.GetMethod" />
+			<class name="com.demo.APItests.UpdateMethod" />
+			<class name="com.demo.APItests.DeleteMethod" />
 		</classes>
 	</test>
 
 	<test name="Soap XML">
 		<classes>
-			<class name="com.demo.tests.SoapXMLRequest" />
+			<class name="com.demo.files.SoapXMLRequest" />
 		</classes>
 	</test>
+
+<!-- 	<test name="Local API">
+		<classes>
+			<class name="com.demo.localAPITest.TestLocalAPI" />
+		</classes>
+	</test> -->
 
 </suite>

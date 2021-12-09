@@ -6,6 +6,6 @@ import io.restassured.response.Response;
 public class JsonFormatter {
 
 	public static JsonPath jsonPathResponse(Response response) {
-		return new JsonPath(response.toString());
+		return new JsonPath(response.asString());
 	}
 }

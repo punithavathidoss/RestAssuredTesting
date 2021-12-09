@@ -1,9 +1,8 @@
-package com.demo.tests;
+package com.demo.APItests;
 
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 public class ApiStart {
 
@@ -44,15 +43,4 @@ public class ApiStart {
 		System.out.println(inlist.asPrettyString());
 		System.out.println(inlist.statusCode());
 	}
-
-//	@Test
-//	public static void post_Test() {
-//
-//		RestAssured.baseURI = "https://reqres.in/api/users";
-//		RequestSpecification request = RestAssured.given();
-
-//		Map<String, Object> post = new HashMap<String, Object>();
-//		System.out.println(post.put("name", "Polo"));
-//		System.out.println(post.put("job", "Analyst"));
-//	}
 }
