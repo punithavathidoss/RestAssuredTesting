@@ -1,8 +1,10 @@
 <h1><i>*****REST Assured API Testing for Beginners*****</i></h1>
 
-
+<hr>
 
 <p>This Repository file contains all basic codes for beginners to understand and for reference to get an idea about the Basics of API Testing.</p>
+
+<hr>
 
 #### Tools Requirements
 
@@ -15,6 +17,7 @@
   <li>TEST NG -> Version 7.-.-</li>
 </ul> 
 
+<hr>
 
 ####Sample project
 
@@ -25,6 +28,7 @@
   <li>Open project</li>
 </ol>
 
+<hr>
 
 #### Dependencies
 
@@ -36,6 +40,8 @@
   <li>JSON Simple</li>
 </ul>
 
+<hr>
+
 #### API Source for Testing
 
 <p><i> Use the base API for testing purpose</i></p>
@@ -45,6 +51,7 @@
   <li>ReqRes API: https://reqres.in/</li>
 </ul>
 
+<hr>
 
 #### Test Runner
 <hr>
@@ -64,6 +71,14 @@ Open cmd
 <br>
 
 Open project in editor tools -> right click on testNG.xml -> run as testng.xml
+
+<hr>
+
+#### Generate Report:
+
+<p> To get report for all the test cases that has been tested </p>
+
+--->> Report => Open index.html
 
 
 

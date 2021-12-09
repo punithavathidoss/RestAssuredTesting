@@ -1,6 +1,13 @@
 target/
 test-output/
+bin/
+report/
+spark
+index.html
+extentConfig.json
+extentconfig.xml
 .project
 .classpath
 .settings
 .metadata
+

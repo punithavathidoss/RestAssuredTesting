@@ -1,4 +1,4 @@
-package com.demo.tests;
+package com.demo.localAPITest;
 
 import static io.restassured.RestAssured.*;
 

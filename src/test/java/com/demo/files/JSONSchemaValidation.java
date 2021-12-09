@@ -1,10 +1,9 @@
-package com.demo.tests;
+package com.demo.files;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasItem;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import  static org.hamcrest.Matchers.equalTo;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
