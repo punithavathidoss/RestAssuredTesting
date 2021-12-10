@@ -8,18 +8,18 @@
 
 #### Tools Requirements
 
-<p><i>Download the required tools for getting started</i></p>
+<p><i>Download the mentioned tools for getting started</i></p>
 
 <ul>
   <li>JAVA -> Version 11.-.-</li>
-  <li>Eclipse WorkBench -> Latest Version</li>
+  <li>Eclipse IDE -> Latest Version</li>
   <li>PostMan API testing tool -> Latest Version</li>
   <li>TEST NG -> Version 7.-.-</li>
 </ul> 
 
 <hr>
 
-####Sample project
+#### Sample project
 
 <p><i>Use the sample project for reference by cloning them from GitHub using Command prompt</i></p>
 
@@ -32,7 +32,7 @@
 
 #### Dependencies
 
-<p><i> Install and add stable dependencies mentioned below from maven repository and Add all dependencies in pom.xml and save file.</i></p>
+<p><i> Add stable dependencies mentioned below from maven repository, Add all dependencies in pom.xml file and save file.</i></p>
 
 <ul>
   <li>REST Assured</li>
@@ -48,21 +48,26 @@
 
 <ul>
   <li>Localhost: http://localhost:3000/</li>
-  <li>ReqRes API: https://reqres.in/</li>
+  <li>Reqres API: https://reqres.in/</li>
 </ul>
 
 <hr>
 
 #### Test Runner
 <hr>
-<i>For local API server Start your local server in command prompt(cmd)</i>
+
+<i>For local API server, Start your local server in command prompt(cmd). Before starting Local API make sure Node Js, Json-Server are installed in your working system.</i>
+
 <br>
-Open cmd 
+
+*Open cmd 
+
 <br>
+
         -> Check for Node Js 
-          <br>
-         -> Check for Json-Server
-         <br>
+          
+         -> Check for Json-Server 
+         
          -> Start local server in cmd
 <br>
 
