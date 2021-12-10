@@ -21,8 +21,6 @@ public class UpdateMethod extends BaseTestURI{
 		String job = "zion resident";
 		String role = "Testing";
 		
-		BaseTestURI.createTest("Update User Test", "Regression", "Punithavathi");
-		
 		Response rsp = given().body(updateUser(name, job, role)).
 	               	   when().contentType(ContentType.JSON).put("/users/2").
 		               then().extract().response();
@@ -50,7 +48,7 @@ public class UpdateMethod extends BaseTestURI{
 		String name = "Kate";
 		String job = "Cooker";
 		String role = "Judge";
-		BaseTestURI.createTest("Patch User Test", "Regression", "Punithavathi");
+		
 		Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(updateUser(name,job,role))
 				.when().put("/users/2")
 				.then().log().all().extract().response();

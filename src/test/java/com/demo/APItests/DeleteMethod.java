@@ -9,9 +9,7 @@ public class DeleteMethod {
 
 	@Test
 	public void deleteMethodValidation() {
-		
-		BaseTestURI.createTest("Delete User Test", "Regression", "Punithavathi");
-		
+
 		Response responce = when().delete("/users/2").then().extract().response();
 
 		Assert.assertEquals(responce.statusCode(), 204);

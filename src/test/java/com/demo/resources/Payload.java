@@ -19,4 +19,20 @@ public class Payload {
         map.put("role", role);
         return map;
     }
+    
+    public static Map<String, String> createUserLocal(String firstName, String lastName, int SubjectId) {
+        Map<String, String> data = new HashMap<>();
+        data.put("firstName", firstName);
+        data.put("lastName", lastName);
+        data.put("SubjectId", SubjectId);
+        return data;
+    }
+    
+    public static Map<String, String> updateUserLocal(String firstName, String lastName, int SubjectId) {
+        Map<String, String> data = new HashMap<>();
+        data.put("firstName", firstName);
+        data.put("lastName", lastName);
+        data.put("SubjectId", SubjectId);
+        return data;
+    }
 }

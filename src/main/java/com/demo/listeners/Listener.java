@@ -21,22 +21,22 @@ public class Listener implements ITestListener, ISuiteListener {
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		System.out.println("In On Test start method");
+		ReportManager.createTest(result.getMethod().getMethodName(), "Regression", "Punithavathi");
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		System.out.println("In On Test Success method");
+		ReportManager.test.pass(result.getMethod().getMethodName() + " is Passed" );
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		System.out.println("In On Test Failure method");
+		ReportManager.test.fail(result.getMethod().getMethodName() + " is Failed" );
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		System.out.println("In On Test Skipped method");
+		ReportManager.test.skip(result.getMethod().getMethodName() + " is skipped" );
 	}
 
 }

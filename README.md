@@ -71,11 +71,12 @@
          -> Start local server in cmd
 <br>
 
-<hr>
+
 <i>For running project use the following steps</i>
 <br>
 
 Open project in editor tools -> right click on testNG.xml -> run as testng.xml
+
 
 <hr>
 
@@ -85,8 +86,10 @@ Open project in editor tools -> right click on testNG.xml -> run as testng.xml
 
 --->> Report => Open index.html
 
+<hr>
 
 
+<br>
 
 
 

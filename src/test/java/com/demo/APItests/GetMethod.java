@@ -11,12 +11,9 @@ import io.restassured.response.Response;
 
 public class GetMethod extends BaseTestURI {
 
-
 	@Test
 	public static void getUsersById() {
 
-		BaseTestURI.createTest("Get User by Id Test", "Regression", "Punithavathi");
-		
 		Response resp = given().when().get("/users/2").then().extract().response();
 
 		JsonPath jpath = jsonPathResponse(resp);
@@ -29,9 +26,7 @@ public class GetMethod extends BaseTestURI {
 
 	@Test
 	public static void getUsers() {
-		
-		BaseTestURI.createTest("Get User Test", "Regression", "Milburn");
-		
+
 		Response res = given().queryParam("page", "2").log().all().when().get("/users").then().extract().response();
 
 		JsonPath jsPath = jsonPathResponse(res);
