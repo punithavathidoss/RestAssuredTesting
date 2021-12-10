@@ -1,87 +1,82 @@
 package com.demo.localAPITest;
 
-import static io.restassured.RestAssured.*;
+import static com.demo.resources.Payload.createUserLocal;
+import static com.demo.resources.Payload.updateUserLocal;
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
 
-import org.json.simple.JSONObject;
-import org.testng.annotations.BeforeTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.demo.report.ReportManager;
+
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
-public class TestLocalAPI {
+public class TestLocalAPI extends BaseLocalTest {
 
-	@BeforeTest
-	public void setUp() {
-		baseURI = "http://localhost:3000";
+	@Test
+	public void getUserList() {
+
+		ReportManager.createLocalTest("GET User List", "Regression");
+
+		Response re = given().contentType(ContentType.JSON).accept(ContentType.JSON)
+				.when().get("/users")
+				.then().extract().response();
+
+		Assert.assertEquals(re.statusCode(), 200);
 	}
 
 	@Test
-	public void get() {
-		given().
-		 get("/users").
-		then().statusCode(200).
-		 log().all();
+	public static void postMethod() {
+
+		String firstName = "Puni";
+		String lastName = "poo";
+		int SubjectId = 7;
+
+		ReportManager.createLocalTest("Post User List", "Regression");
+		Response res = given()
+				.when().contentType(ContentType.JSON).body(createUserLocal(firstName, lastName, SubjectId)).post("/users")
+				.then().extract().response();
+
+		Assert.assertEquals(res.statusCode(), 201);
+	}
+
+
+	@Test
+	public static void updateMethod() {
+
+		String firstName = "Puni";
+		String lastName = "pooh";
+		int SubjectId = 7;
+
+		ReportManager.createLocalTest("Update User List", "Regression");
+		Response resp = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(updateUserLocal(firstName, lastName, SubjectId))
+				.when().put("/users/4")
+				.then().extract().response();
+
+		Assert.assertEquals(resp.statusCode(), 200);
 	}
 
 	@Test
-	public void postMethod() {
+	public static void patchMethod() {
 
-		JSONObject postRequest = new JSONObject();
+		String firstName = "Puni";
+		String lastName = "Boo";
+		int SubjectId = 9;
 
-		postRequest.put("firstName", "Puni");
-		postRequest.put("lastName", "poo");
+		ReportManager.createLocalTest("Patch User List", "Regression");
+		Response respo = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(updateUserLocal(firstName, lastName, SubjectId))
+				.when().put("/users/4")
+				.then().extract().response();
 
-		given().
-		 contentType(ContentType.JSON).
-		 accept(ContentType.JSON).
-		 body(postRequest.
-		 toJSONString()).
-		when().
-		 post("/users").
-		then().
-		 statusCode(201);
+		Assert.assertEquals(respo.statusCode(), 200);
 	}
-	
+
 	@Test
-	public void updateMethod() {
-		JSONObject putRequest = new JSONObject();
-		
-		putRequest.put("firstName", "Puni");
-		putRequest.put("lastName", "poo");
-		putRequest.put("SubjectId", 7);
-		
-		given().
-		 contentType(ContentType.JSON).
-		 accept(ContentType.JSON).
-		 body(putRequest.toJSONString()).
-		when().
-		 put("/users/4").
-		then().
-		 statusCode(200);
-	}
-	
-	@Test 
-	public void patchMethod() {
-		JSONObject putRequest = new JSONObject();
-		
-		putRequest.put("firstName", "Puni");
-		putRequest.put("lastName", "Boo");
-		
-		given().
-		 contentType(ContentType.JSON).
-		 accept(ContentType.JSON).
-		 body(putRequest.toJSONString()).
-		when().
-		 put("/users/4").
-		then().
-		 statusCode(200);
-	}
-	
-	@Test
-	public void deleteMethod() {
-		when().
-		delete("/users/2").
-		then().
-		statusCode(200);
+	public static void deleteMethod() {
+		Response respon = when().delete("/users/2").then().extract().response();
+
+		Assert.assertEquals(respon.statusCode(), 200);
 	}
 }

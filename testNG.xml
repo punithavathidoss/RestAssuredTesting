@@ -2,7 +2,9 @@
 
 <suite name="For Testing All API" verbose="1">
 
-	<listeners><listener class-name="com.demo.listeners.Listener" /> </listeners>
+	<listeners>
+		<listener class-name="com.demo.listeners.Listener" />
+	</listeners>
 
 	<test name="Reqres API">
 		<classes>
@@ -19,7 +21,10 @@
 		</classes>
 	</test>
 
-	<!-- <test name="Local API"> <classes> <class name="com.demo.localAPITest.TestLocalAPI" 
-		/> </classes> </test> -->
+	<test name="Local API">
+		<classes>
+			<class name="com.demo.localAPITest.TestLocalAPI" />
+		</classes>
+	</test>
 
 </suite>

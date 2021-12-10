@@ -6,11 +6,9 @@ import org.testng.annotations.BeforeTest;
 
 public class BaseTestURI {
 
-	
-
 	@BeforeTest
 	public static void setUpBaseURI() {
 		baseURI = "https://reqres.in/api";
 	}
 
-	}
+}

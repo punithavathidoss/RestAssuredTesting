@@ -9,19 +9,17 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-public class PostMethod extends BaseTestURI{
+public class PostMethod extends BaseTestURI {
 
 	@Test
 	public static void createUserandValidate() {
 
-		String name ="Puni";
+		String name = "Puni";
 		String job = "Analyst";
 
-		BaseTestURI.createTest("Post User Test", "Smoke", "Punithavathi");
 		Response re = given()
-				      .when().contentType(ContentType.JSON).body(createUser(name,job))
-				      .post("/users")
-				      .then().extract().response();
+				.when().contentType(ContentType.JSON).body(createUser(name, job)).post("/users")
+				.then().extract().response();
 
 		JsonPath jsoPath = jsonPathResponse(re);
 
