@@ -2,6 +2,8 @@
 
 <suite name="For Testing All API" verbose="1">
 
+	<listeners><listener class-name="com.demo.listeners.Listener" /> </listeners>
+
 	<test name="Reqres API">
 		<classes>
 			<class name="com.demo.APItests.PostMethod" />
@@ -17,10 +19,7 @@
 		</classes>
 	</test>
 
-<!-- 	<test name="Local API">
-		<classes>
-			<class name="com.demo.localAPITest.TestLocalAPI" />
-		</classes>
-	</test> -->
+	<!-- <test name="Local API"> <classes> <class name="com.demo.localAPITest.TestLocalAPI" 
+		/> </classes> </test> -->
 
 </suite>
