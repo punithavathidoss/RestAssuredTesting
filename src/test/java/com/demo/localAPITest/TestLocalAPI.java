@@ -15,7 +15,7 @@ import io.restassured.response.Response;
 
 public class TestLocalAPI extends BaseLocalTest {
 
-	@Test
+	@Test(description = "Get User List")
 	public void getUserList() {
 
 		ReportManager.createLocalTest("GET User List", "Regression");
@@ -24,10 +24,13 @@ public class TestLocalAPI extends BaseLocalTest {
 				.when().get("/users")
 				.then().extract().response();
 
+//		ReportManager.logResponse(re.asPrettyString());
+		addResponseToReport(re.asPrettyString());
+		
 		Assert.assertEquals(re.statusCode(), 200);
 	}
 
-	@Test
+	@Test(description = "Create User Test")
 	public static void postMethod() {
 
 		String firstName = "Puni";
@@ -39,11 +42,14 @@ public class TestLocalAPI extends BaseLocalTest {
 				.when().contentType(ContentType.JSON).body(createUserLocal(firstName, lastName, SubjectId)).post("/users")
 				.then().extract().response();
 
+//		ReportManager.logResponse(res.asPrettyString());
+		addResponseToReport(res.asPrettyString());
+		
 		Assert.assertEquals(res.statusCode(), 201);
 	}
 
 
-	@Test
+	@Test(description = "Update User Test")
 	public static void updateMethod() {
 
 		String firstName = "Puni";
@@ -55,10 +61,13 @@ public class TestLocalAPI extends BaseLocalTest {
 				.when().put("/users/4")
 				.then().extract().response();
 
+//		ReportManager.logResponse(resp.asPrettyString());
+		addResponseToReport(resp.asPrettyString());
+		
 		Assert.assertEquals(resp.statusCode(), 200);
 	}
 
-	@Test
+	@Test(description = "Patch User Test")
 	public static void patchMethod() {
 
 		String firstName = "Puni";
@@ -70,10 +79,13 @@ public class TestLocalAPI extends BaseLocalTest {
 				.when().put("/users/4")
 				.then().extract().response();
 
+//		ReportManager.logResponse(respo.asPrettyString());
+		addResponseToReport(respo.asPrettyString());
+		
 		Assert.assertEquals(respo.statusCode(), 200);
 	}
 
-	@Test
+	@Test(description = "Delete User By Id")
 	public static void deleteMethod() {
 		Response respon = when().delete("/users/2").then().extract().response();
 

@@ -11,11 +11,13 @@ import io.restassured.response.Response;
 
 public class GetMethod extends BaseTestURI {
 
-	@Test
+	@Test(description = "Get User By Id")
 	public static void getUsersById() {
 
 		Response resp = given().when().get("/users/2").then().extract().response();
-
+		
+//		ReportManager.logResponse(resp.asPrettyString());
+		addResponseToReport(resp.asPrettyString());
 		JsonPath jpath = jsonPathResponse(resp);
 
 		Assert.assertEquals(jpath.getInt("data.id"), 2);
@@ -24,11 +26,14 @@ public class GetMethod extends BaseTestURI {
 		Assert.assertEquals(jpath.getString("data.email"), "janet.weaver@reqres.in");
 	}
 
-	@Test
+	@Test(description = "Get Users list")
 	public static void getUsers() {
 
 		Response res = given().queryParam("page", "2").log().all().when().get("/users").then().extract().response();
 
+//		ReportManager.logResponse(res.asPrettyString());
+		addResponseToReport(res.asPrettyString());
+		
 		JsonPath jsPath = jsonPathResponse(res);
 
 		Assert.assertEquals(jsPath.getInt("page"), 2);
