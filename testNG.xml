@@ -15,16 +15,8 @@
 		</classes>
 	</test>
 
-	<test name="Soap XML">
-		<classes>
-			<class name="com.demo.files.SoapXMLRequest" />
-		</classes>
-	</test>
-
-	<test name="Local API">
-		<classes>
-			<class name="com.demo.localAPITest.TestLocalAPI" />
-		</classes>
-	</test>
+	<!-- <test name="Soap XML"> <classes> <class name="com.demo.files.SoapXMLRequest" 
+		/> </classes> </test> <test name="Local API"> <classes> <class name="com.demo.localAPITest.TestLocalAPI" 
+		/> </classes> </test> -->
 
 </suite>

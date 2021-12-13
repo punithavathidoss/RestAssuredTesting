@@ -24,7 +24,7 @@ public class SoapXMLRequest {
 	@Test
 	public void validateSoapXML() throws IOException {
 		
-		File file = new File("./src/main/java/com/demo/test/Add.xml");
+		File file = new File("./src/main/java/com/demo/testDatas/Add.xml");
 		
 		if(file.exists())
 			System.out.println("   >>  File Exists");
@@ -35,7 +35,7 @@ public class SoapXMLRequest {
 		given().contentType("text/xml").accept(ContentType.XML).body(requestBody)
 		.when().post("/calculator.asmx")
 		.then().statusCode(200).log().all()
-		.and().body("//*:AddResult.text()",equalTo("5"));
+		.and().body("//*:AddResult.text()",equalTo("5")).log().all();
 	}
 }
 
